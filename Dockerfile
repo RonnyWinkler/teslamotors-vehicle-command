@@ -16,7 +16,6 @@ RUN go build ./...
 RUN go install ./...
 # Set the entrypoint and command
 ENTRYPOINT ["/bin/bash", "-l", "-c"]
-CMD ["/go/bin/tesla-http-proxy -tls-key $TLS_KEY_PATH -cert $CA_CERT_PATH -key-file
-$TESLA_PRIVATE_KEY_PATH -port 4443 -host 0.0.0.0 -verbose"]
+CMD ["/go/bin/tesla-http-proxy -tls-key $TLS_KEY_PATH -cert $CA_CERT_PATH -key-file $TESLA_PRIVATE_KEY_PATH -port 4443 -host 0.0.0.0 -verbose"]
 #ENTRYPOINT ["tail"]
 #CMD ["-f","/dev/null"]
