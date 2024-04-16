@@ -59,13 +59,12 @@ func NewServer(addr string) (*http.Server, string) {
 		panic(err)
 	}
 	server := http.Server{
-		Addr: addr
-//		,
-//		TLSConfig: &tls.Config{
-//			Certificates: []tls.Certificate{cert},
-//			RootCAs:      x509.NewCertPool(),
-//		},
+		Addr: addr,
+		TLSConfig: &tls.Config{
+			Certificates: []tls.Certificate{cert},
+			RootCAs:      x509.NewCertPool(),
+		},
 	}
-//	server.TLSConfig.RootCAs.AppendCertsFromPEM(certPEM)
+	server.TLSConfig.RootCAs.AppendCertsFromPEM(certPEM)
 	return &server, string(certPEM)
 }
