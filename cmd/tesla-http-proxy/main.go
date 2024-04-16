@@ -112,8 +112,7 @@ func main() {
 	// log.Error("Server stopped: %s", http.ListenAndServeTLS(addr, certFilename, keyFilename, p))
 	if port == 80 || port == 8080 {
 		log.Error("Server stopped: %s", http.ListenAndServe(addr, p))
-	}
-	else {
+	} else {
 		log.Error("Server stopped: %s", http.ListenAndServeTLS(addr, certFilename, keyFilename, p))
 	}
 }
