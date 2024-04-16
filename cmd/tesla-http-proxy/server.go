@@ -66,6 +66,6 @@ func NewServer(addr string) (*http.Server, string) {
 //			RootCAs:      x509.NewCertPool(),
 		},
 	}
-	server.TLSConfig.RootCAs.AppendCertsFromPEM(certPEM)
+//	server.TLSConfig.RootCAs.AppendCertsFromPEM(certPEM)
 	return &server, string(certPEM)
 }
