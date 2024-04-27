@@ -3,7 +3,7 @@ FROM golang:1.20.12-bookworm
 ENV CA_CERT_PATH $CA_CERT_PATH
 ENV TLS_KEY_PATH $TLS_KEY_PATH
 ENV TESLA_PRIVATE_KEY_PATH $TESLA_PRIVATE_KEY_PATH
-ENV REPO_URL https://github.com/RonnyWinkler/teslamotors-vehicle-command.git
+ENV REPO_URL https://github.com/RonnyWinkler/teslamotors-vehicle-command/tree/test
 RUN mkdir /TeslaProxy
 WORKDIR /vehicle-command
 # Run as root user
