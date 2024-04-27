@@ -218,6 +218,12 @@ func (p *Proxy) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
+	appVersion := r.Header.Get("X-Name")
+	if appVersion == "" || appVersion < 10402 {
+		writeJSONError(w, http.StatusPreconditionFailed, 'App needs to be updated')
+		return
+	}
+
 	if strings.HasPrefix(req.URL.Path, "/api/1/vehicles/") {
 		path := strings.Split(req.URL.Path, "/")
 		if len(path) == 7 && path[5] == "command" {
