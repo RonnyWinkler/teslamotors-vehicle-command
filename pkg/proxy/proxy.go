@@ -219,7 +219,7 @@ func (p *Proxy) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	}
 
 	appVersion := req.Header.Get("X-Homey-App-Version")
-	if appVersion == "" || appVersion < 10402 {
+	if appVersion == "" || appVersion < "010402" {
 		writeJSONError(w, http.StatusPreconditionFailed, fmt.Errorf("App needs to be updated"))
 		return
 	}
