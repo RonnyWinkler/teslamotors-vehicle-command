@@ -9,7 +9,7 @@ WORKDIR /vehicle-command
 # Run as root user
 USER root
 # Clone the repository
-RUN git clone -b teslamotors-vehicle-command-test --single-branch ${REPO_URL} .
+RUN git clone --single-branch --branch test ${REPO_URL} .
 # Install dependencies, build and install the project
 RUN go get ./...
 RUN go build ./...
