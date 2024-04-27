@@ -9,7 +9,7 @@ WORKDIR /vehicle-command
 # Run as root user
 USER root
 # Clone the repository
-RUN git clone ${REPO_URL} .
+RUN git clone -b test ${REPO_URL} --single-branch.
 # Install dependencies, build and install the project
 RUN go get ./...
 RUN go build ./...
