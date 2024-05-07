@@ -218,11 +218,11 @@ func (p *Proxy) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	appVersion := req.Header.Get("X-Homey-App-Version")
-	if appVersion == "" || appVersion < "010403" {
-		writeJSONError(w, http.StatusUpgradeRequired, fmt.Errorf("App needs to be updated"))
-		return
-	}
+//	appVersion := req.Header.Get("X-Homey-App-Version")
+//	if appVersion == "" || appVersion < "010403" {
+//		writeJSONError(w, http.StatusUpgradeRequired, fmt.Errorf("App needs to be updated"))
+//		return
+//	}
 
 	if strings.HasPrefix(req.URL.Path, "/api/1/vehicles/") {
 		path := strings.Split(req.URL.Path, "/")
