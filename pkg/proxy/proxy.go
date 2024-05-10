@@ -218,6 +218,12 @@ func (p *Proxy) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
+//	appVersion := req.Header.Get("X-Homey-App-Version")
+//	if appVersion == "" || appVersion < "010403" {
+//		writeJSONError(w, http.StatusUpgradeRequired, fmt.Errorf("App needs to be updated"))
+//		return
+//	}
+
 	if strings.HasPrefix(req.URL.Path, "/api/1/vehicles/") {
 		path := strings.Split(req.URL.Path, "/")
 		if len(path) == 7 && path[5] == "command" {
@@ -296,7 +302,7 @@ func (p *Proxy) loadVehicleAndCommandFromRequest(ctx context.Context, acct *acco
 	log.Debug("Executing %s on %s", command, vin)
 	if req.Method != http.MethodPost {
 		writeJSONError(w, http.StatusMethodNotAllowed, nil)
-		return nil, nil, fmt.Errorf("Wrong http method")
+		return nil, nil, fmt.Errorf("wrong http method")
 	}
 
 	commandToExecuteFunc, err := extractCommandAction(ctx, req, command)
