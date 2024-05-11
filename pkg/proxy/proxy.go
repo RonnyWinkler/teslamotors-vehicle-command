@@ -218,12 +218,15 @@ func (p *Proxy) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-//	appVersion := req.Header.Get("X-Homey-App-Version")
-//	if appVersion == "" || appVersion < "010403" {
-//		writeJSONError(w, http.StatusUpgradeRequired, fmt.Errorf("App needs to be updated"))
-//		return
-//	}
-
+//	Ronny Winkler: Add app verion check
+// 	=> START
+	appVersion := req.Header.Get("X-Homey-App-Version")
+	if appVersion == "" || appVersion < "010403" {
+		writeJSONError(w, http.StatusUpgradeRequired, fmt.Errorf("App needs to be updated"))
+		return
+	}
+// 	<= END
+	
 	if strings.HasPrefix(req.URL.Path, "/api/1/vehicles/") {
 		path := strings.Split(req.URL.Path, "/")
 		if len(path) == 7 && path[5] == "command" {
