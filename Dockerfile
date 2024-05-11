@@ -19,3 +19,4 @@ ENTRYPOINT ["/bin/bash", "-l", "-c"]
 CMD ["/go/bin/tesla-http-proxy -tls-key $TLS_KEY_PATH -cert $CA_CERT_PATH -key-file $TESLA_PRIVATE_KEY_PATH -port 8080 -host 0.0.0.0 -verbose"]
 #ENTRYPOINT ["tail"]
 #CMD ["-f","/dev/null"]
+
